@@ -1,0 +1,49 @@
+<!-- templates/home.html -->
+
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+    {% now "l" as current_year %}
+      {% if user.is_authenticated %}
+
+        {% if current_year == 'Monday'  %}
+            <div class="post-entry">
+            <h2>{{ object_list.0}}</h2>
+            <pre>{{ object_list.0.body }}</pre>
+            </div>
+        {% elif current_year == "Tuesday" %}
+            <div class="post-entry">
+            <h2>{{ object_list.1}}</h2>
+            <pre>{{ object_list.1.body }}</pre>
+            </div>
+        {% elif current_year == "Wednesday" %}
+            <div class="post-entry">
+            <h2>{{ object_list.2}}</h2>
+            <pre>{{ object_list.2.body }}</pre>
+            </div>
+        {% elif current_year == "Thursday" %}
+            <div class="post-entry">
+            <h2>{{ object_list.3}}</h2>
+            <pre>{{ object_list.3.body }}</pre>
+            </div>
+        {% elif current_year == "Friday" %}
+            <div class="post-entry">
+            <h2>{{ object_list.4}}  </h2>
+            <pre>{{ object_list.4.body }}</pre>
+            </div>
+        {% elif current_year == "Saturday" %}
+            <div class="post-entry">
+            <h2>{{ object_list.5}}  </h2>
+            <p>{{ object_list.5.body }}</p>
+            </div>
+        {% elif current_year == "Sunday" %}
+            <div class="post-entry">
+            <h2>{{ object_list.6}} </h2>
+          <pre>{{ object_list.6.body }}</pre>
+            </div>
+        {% endif %}
+      {% else %}
+        <h1>Нужно войти/зарегистрироваться</h1>
+      {% endif %}
+{% endblock content %}

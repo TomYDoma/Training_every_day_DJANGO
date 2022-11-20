@@ -1,0 +1,29 @@
+{% load static %}
+<html>
+  <head>
+    <title>Тренируемся по дням недели</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  </head>
+  <body>
+    <div>
+      <header>
+        <div class="nav-left">
+          <h1><a href="{% url 'home' %}">Тренируемся по дням недели</a></h1>
+        </div>
+        <div>
+          {% if user.is_authenticated %}
+            <p class="log">Привет, {{ user.username }}!</p>
+            <p class="log"><a style="color: red; text-decoration: none;" href="{% url 'logout' %}">Log out</a></p>
+          {% else %}
+            <p class="log">Вы не зарегистрированы</p>
+            <a href="{% url 'login' %}">Войти</a>
+          {% endif %}
+        </div>
+
+      </header>
+
+    {% block content %}
+    {% endblock content %}
+    </div>
+  </body>
+</html>
